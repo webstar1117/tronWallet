@@ -35,14 +35,14 @@ const app = express(),
 app.use(cors())
 app.use(express.json());
 
-app.post('/api/createWallet', (req, res) => {
+app.post('/trxapi/createWallet', (req, res) => {
     console.log("post /api/createWallet");
     let response = generateAccount();
     console.log(response)
     res.json(response);
 });
 
-app.post('/api/getTrxBalance', async function(req, res) {
+app.post('/trxapi/getTrxBalance', async function(req, res) {
     try{
         const tronWeb = new TronWeb(mainOptions.fullNode, mainOptions.solidityNode, mainOptions.eventServer, privateKey);
         console.log("post /api/getTrxBalance");
@@ -60,7 +60,7 @@ app.post('/api/getTrxBalance', async function(req, res) {
     }
     
 });
-app.post('/api/getTokenBalance', async function(req, res) {
+app.post('/trxapi/getTokenBalance', async function(req, res) {
     try{
         const tronWeb = new TronWeb(mainOptions.fullNode, mainOptions.solidityNode, mainOptions.eventServer, privateKey);
         console.log("post /api/getTokenBalance");
@@ -85,7 +85,7 @@ app.post('/api/getTokenBalance', async function(req, res) {
     
 });
 
-app.post('/api/sendToken', async function(req, res) {
+app.post('/trxapi/sendToken', async function(req, res) {
     try{
         
         console.log("post /api/sendToken");
