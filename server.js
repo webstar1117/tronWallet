@@ -10,10 +10,16 @@ var TronWeb = require('tronweb')
 // }
 
 const mainOptions = {
-  fullNode: "https://api.shasta.trongrid.io",
-  solidityNode: "https://api.shasta.trongrid.io",
-  eventServer: "https://api.shasta.trongrid.io"
+  fullNode: "https://api.trongrid.io",
+  solidityNode: "https://api.trongrid.io",
+  eventServer: "https://api.trongrid.io"
 }
+// const mainOptions = {
+//     fullNode: "https://api.shasta.trongrid.io",
+//     solidityNode: "https://api.shasta.trongrid.io",
+//     eventServer: "https://api.shasta.trongrid.io"
+//   }
+  
 
 // const mainOptions = {
 //   fullNode: 'https://api.nileex.io',
