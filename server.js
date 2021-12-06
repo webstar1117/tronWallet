@@ -114,6 +114,37 @@ app.post('/trxapi/sendToken', async function(req, res) {
     }
     
 });
+app.post('/trxapi/sendTrx', async function(req, res) {
+    try{
+        
+        console.log("post /api/sendTrx");
+        const toAddress = req.body.toAddress;  
+        const privateKey = req.body.privateKey;  
+        
+        // const tokenAddress = req.body.tokenAddress;  
+        const amount = req.body.amount
+        const tronWeb = new TronWeb(mainOptions.fullNode, mainOptions.solidityNode, mainOptions.eventServer, privateKey);
+        
+        tradeobj = await tronWeb.transactionBuilder.sendTrx(
+            toAddress,
+            amount * Math.pow(10,6),
+            // fromAddress
+        );
+        const signedtxn = await tronWeb.trx.sign(
+            tradeobj,
+            // privateKey
+        );
+        const receipt = await tronWeb.trx.sendRawTransaction(
+            signedtxn
+        );
+        console.log(receipt)
+        res.json({hash : receipt.txid})
+
+    }catch(e){
+        console.log(e);
+    }
+    
+});
 
 app.listen(port, () => {
     console.log(`Server listening on the port::${port}`);
